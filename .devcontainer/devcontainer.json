@@ -1,0 +1,22 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the README at:
+// https://github.com/microsoft/vscode-dev-containers/tree/v0.209.6/containers/python-3
+{
+	"name": "Python 3",
+	"image": "mcr.microsoft.com/vscode/devcontainers/python:0-3.10-bullseye",
+	"mounts": [
+		"type=bind,src=${localEnv:USERPROFILE}/.ssh,dst=/root/.ssh"
+	],
+	"settings": {
+		"python.defaultInterpreterPath": "/usr/local/bin/python",
+		"python.linting.enabled": true,
+		"python.linting.flake8Enabled": true
+	},
+	"extensions": [
+		"ms-python.python",
+		"ms-python.vscode-pylance",
+		"yzhang.markdown-all-in-one",
+		"yzane.markdown-pdf"
+	],
+	"postCreateCommand": "bash .devcontainer/postCreate.sh",
+	"remoteUser": "root"
+}

@@ -1,0 +1,1092 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>中級編.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/*
+
+Visual Studio-like style based on original C# coloring by Jason Diamond <jason@diamond.name>
+
+*/
+.hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 0.5em;
+  background: white;
+  color: black;
+}
+
+.hljs-comment,
+.hljs-quote,
+.hljs-variable {
+  color: #008000;
+}
+
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-built_in,
+.hljs-name,
+.hljs-tag {
+  color: #00f;
+}
+
+.hljs-string,
+.hljs-title,
+.hljs-section,
+.hljs-attribute,
+.hljs-literal,
+.hljs-template-tag,
+.hljs-template-variable,
+.hljs-type,
+.hljs-addition {
+  color: #a31515;
+}
+
+.hljs-deletion,
+.hljs-selector-attr,
+.hljs-selector-pseudo,
+.hljs-meta {
+  color: #2b91af;
+}
+
+.hljs-doctag {
+  color: #808080;
+}
+
+.hljs-attr {
+  color: #f00;
+}
+
+.hljs-symbol,
+.hljs-bullet,
+.hljs-link {
+  color: #00b0e8;
+}
+
+
+.hljs-emphasis {
+  font-style: italic;
+}
+
+.hljs-strong {
+  font-weight: bold;
+}
+
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+<link rel="stylesheet" href="file:///g%3A/%E3%83%9E%E3%82%A4%E3%83%89%E3%83%A9%E3%82%A4%E3%83%96/univ/%E7%AB%B9%E5%86%85%E7%A0%94/Python%E5%AD%A6%E7%BF%92%E8%B3%87%E6%96%99/markdown/.vscode/github-markdown.css" type="text/css"><link rel="stylesheet" href="file:///g%3A/%E3%83%9E%E3%82%A4%E3%83%89%E3%83%A9%E3%82%A4%E3%83%96/univ/%E7%AB%B9%E5%86%85%E7%A0%94/Python%E5%AD%A6%E7%BF%92%E8%B3%87%E6%96%99/.vscode/github-markdown.css" type="text/css">
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="python%E5%AD%A6%E7%BF%92%E3%82%AD%E3%83%83%E3%83%88%E4%B8%AD%E7%B4%9A%E7%B7%A8">Python学習キット中級編</h1>
+<ul>
+<li><a href="#python%E5%AD%A6%E7%BF%92%E3%82%AD%E3%83%83%E3%83%88%E4%B8%AD%E7%B4%9A%E7%B7%A8">Python学習キット中級編</a>
+<ul>
+<li><a href="#%E3%83%A9%E3%82%A4%E3%83%96%E3%83%A9%E3%83%AA%E3%82%92%E4%BD%BF%E7%94%A8%E3%81%99%E3%82%8B">ライブラリを使用する</a>
+<ul>
+<li><a href="#%E3%83%A2%E3%82%B8%E3%83%A5%E3%83%BC%E3%83%AB%E3%81%A8%E3%83%91%E3%83%83%E3%82%B1%E3%83%BC%E3%82%B8">モジュールとパッケージ</a></li>
+<li><a href="#%E3%83%A9%E3%83%B3%E3%83%80%E3%83%A0%E3%82%A6%E3%82%A9%E3%83%BC%E3%82%AF%E3%82%B7%E3%83%9F%E3%83%A5%E3%83%AC%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3">ランダムウォークシミュレーション</a></li>
+</ul>
+</li>
+<li><a href="#%E6%A8%99%E6%BA%96%E3%83%A9%E3%82%A4%E3%83%96%E3%83%A9%E3%83%AA">標準ライブラリ</a>
+<ul>
+<li><a href="#re">re</a></li>
+<li><a href="#math">math</a></li>
+<li><a href="#statistics">statistics</a></li>
+<li><a href="#itertools">itertools</a></li>
+<li><a href="#pathlib">pathlib</a></li>
+<li><a href="#tempfile">tempfile</a></li>
+<li><a href="#shutil">shutil</a></li>
+<li><a href="#os">os</a></li>
+<li><a href="#json">json</a></li>
+<li><a href="#concurrentfutures">concurrent.futures</a></li>
+</ul>
+</li>
+<li><a href="#%E3%82%B5%E3%83%BC%E3%83%89%E3%83%91%E3%83%BC%E3%83%86%E3%82%A3%E3%83%A9%E3%82%A4%E3%83%96%E3%83%A9%E3%83%AA%E3%82%92%E4%BD%BF%E7%94%A8%E3%81%99%E3%82%8B">サードパーティライブラリを使用する</a>
+<ul>
+<li><a href="#pypi">PyPI</a></li>
+<li><a href="#pip">pip</a></li>
+<li><a href="#%E3%82%88%E3%81%8F%E4%BD%BF%E7%94%A8%E3%81%99%E3%82%8B%E3%82%B5%E3%83%BC%E3%83%89%E3%83%91%E3%83%BC%E3%83%86%E3%82%A3%E3%83%A9%E3%82%A4%E3%83%96%E3%83%A9%E3%83%AA">よく使用するサードパーティライブラリ</a>
+<ul>
+<li><a href="#numpy">Numpy</a></li>
+<li><a href="#matplotlib">Matplotlib</a></li>
+<li><a href="#plotly">Plotly</a></li>
+<li><a href="#pandas">Pandas</a></li>
+<li><a href="#requests">Requests</a></li>
+<li><a href="#beautifulsoup4">BeautifulSoup4</a></li>
+<li><a href="#selenium">Selenium</a></li>
+<li><a href="#openpyxl">OpenPyXL</a></li>
+<li><a href="#python-pptx">python-pptx</a></li>
+<li><a href="#pyautogui">PyAutoGUI</a></li>
+<li><a href="#tlab">tlab</a></li>
+</ul>
+</li>
+<li><a href="#%E3%81%9D%E3%81%AE%E4%BB%96%E3%81%AE%E3%83%A9%E3%82%A4%E3%83%96%E3%83%A9%E3%83%AA">その他のライブラリ</a>
+<ul>
+<li><a href="#pillow">Pillow</a></li>
+<li><a href="#opencv">OpenCV</a></li>
+<li><a href="#click">Click</a></li>
+<li><a href="#django-flask-fastapi">Django, Flask, FastAPI</a></li>
+<li><a href="#tensorflow-pytorch">TensorFlow, PyTorch</a></li>
+<li><a href="#streamlit">Streamlit</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#%E3%82%BF%E3%82%B9%E3%82%AF%E3%82%92%E5%8A%B9%E7%8E%87%E5%8C%96%E3%81%99%E3%82%8B">タスクを効率化する</a>
+<ul>
+<li><a href="#%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%AE%E6%A4%9C%E7%B4%A2">ファイルの検索</a></li>
+<li><a href="#%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%AE%E3%82%B3%E3%83%94%E3%83%BC%E7%A7%BB%E5%8B%95">ファイルのコピー・移動</a></li>
+<li><a href="#zip%E5%9C%A7%E7%B8%AE">zip圧縮</a></li>
+<li><a href="#%E3%82%A6%E3%82%A7%E3%83%96%E3%83%9A%E3%83%BC%E3%82%B8%E3%82%92%E5%8F%96%E5%BE%97">ウェブページを取得</a></li>
+<li><a href="#html%E3%82%92%E8%A7%A3%E6%9E%90">HTMLを解析</a></li>
+<li><a href="#%E3%83%96%E3%83%A9%E3%82%A6%E3%82%B6%E6%93%8D%E4%BD%9C%E3%82%92%E8%87%AA%E5%8B%95%E5%8C%96">ブラウザ操作を自動化</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<div class="page">
+<h2 id="%E3%83%A9%E3%82%A4%E3%83%96%E3%83%A9%E3%83%AA%E3%82%92%E4%BD%BF%E7%94%A8%E3%81%99%E3%82%8B">ライブラリを使用する</h2>
+<h3 id="%E3%83%A2%E3%82%B8%E3%83%A5%E3%83%BC%E3%83%AB%E3%81%A8%E3%83%91%E3%83%83%E3%82%B1%E3%83%BC%E3%82%B8">モジュールとパッケージ</h3>
+<p>プログラムを再利用可能とする仕組みとして「モジュール」というものがある。
+Pythonではファイルがそのままモジュールとなる仕組みになっている。
+<code>module.py</code>というファイルを作れば、それは<code>module</code>という名前のモジュールになり、<code>import module</code>とインポートすることで別のファイルで<code>module.py</code>で定義した関数などを使用することができる。</p>
+<p>いくつかのモジュールを一つのディレクトリに集めたものを「パッケージ」という。
+Pythonではディレクトリに<code>__init__.py</code>というファイルを作成することで、そのディレクトリをパッケージ化することができる。
+パッケージをさらに集めてパッケージ化することもできる。</p>
+<h3 id="%E3%83%A9%E3%83%B3%E3%83%80%E3%83%A0%E3%82%A6%E3%82%A9%E3%83%BC%E3%82%AF%E3%82%B7%E3%83%9F%E3%83%A5%E3%83%AC%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3">ランダムウォークシミュレーション</h3>
+<p>標準ライブラリの一つである<code>random</code>モジュールと<code>math</code>モジュールを使用して、ランダムウォークをシミュレーションしてみよう。</p>
+<p>モジュールを使用するには、<code>import モジュール名</code>と記述する。<br>
+モジュールの関数を呼び出すには<code>モジュール名.関数名()</code>と記述する。</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">import</span> random
+<span class="hljs-keyword">import</span> math
+
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">random_walk</span><span class="hljs-params">(x=<span class="hljs-number">0</span>, y=<span class="hljs-number">0</span>, d=<span class="hljs-number">1</span>, step=<span class="hljs-number">100</span>)</span>:</span>
+    <span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> range(step):
+        theta = <span class="hljs-number">2</span> * math.pi * random.random()
+        x += d * math.cos(theta)
+        y += d * math.sin(theta)
+    <span class="hljs-keyword">return</span> x, y
+
+
+<span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">"__main__"</span>:
+    results = [random_walk() <span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> range(<span class="hljs-number">100</span>)]
+    distances = [math.hypot(x, y) <span class="hljs-keyword">for</span> (x, y) <span class="hljs-keyword">in</span> results]
+    avg = sum(distances) / len(distances)
+    print(<span class="hljs-string">"Average:"</span>, avg)
+
+</div></code></pre>
+<p>ソースコードは<a href="../random_walk.py">random_walk.py</a>にある。</p>
+<pre class="hljs"><code><div>$ python random_walk.py
+Average: 9.349949550243096
+</div></code></pre>
+<div class="page">
+<h2 id="%E6%A8%99%E6%BA%96%E3%83%A9%E3%82%A4%E3%83%96%E3%83%A9%E3%83%AA">標準ライブラリ</h2>
+<p>Pythonは高級な操作を簡単に実現できるように、多くの標準ライブラリが実装されている。</p>
+<p>全ての標準ライブラリは<a href="https://docs.python.org/ja/3.10/library/index.html#library-index">ここ</a>で確認することができる。</p>
+<p>その中で、よく使用するライブラリを挙げておく。</p>
+<h3 id="re"><a href="https://docs.python.org/ja/3.10/library/re.html">re</a></h3>
+<p>正規表現を扱うためのモジュール。</p>
+<pre class="hljs"><code><div><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-keyword">import</span> re
+<span class="hljs-meta">&gt;&gt;&gt; </span>pattern = <span class="hljs-string">r"hello, (?=\w+)"</span>
+<span class="hljs-meta">&gt;&gt;&gt; </span>re.match(pattern, <span class="hljs-string">"hello, world"</span>)
+&lt;re.Match object; span=(<span class="hljs-number">0</span>, <span class="hljs-number">7</span>), match=<span class="hljs-string">'hello, '</span>&gt;  <span class="hljs-comment"># マッチする</span>
+<span class="hljs-meta">&gt;&gt;&gt; </span>re.match(pattern, <span class="hljs-string">"hello, ???"</span>)              <span class="hljs-comment"># マッチしない</span>
+</div></code></pre>
+<h3 id="math"><a href="https://docs.python.org/ja/3.10/library/math.html">math</a></h3>
+<p>数学関数を集めたモジュール。</p>
+<pre class="hljs"><code><div><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-keyword">import</span> math
+<span class="hljs-meta">&gt;&gt;&gt; </span>math.pi              <span class="hljs-comment"># 円周率</span>
+<span class="hljs-number">3.141592653589793</span>
+<span class="hljs-meta">&gt;&gt;&gt; </span>math.floor(math.pi)  <span class="hljs-comment"># 床関数</span>
+<span class="hljs-number">3</span> 
+<span class="hljs-meta">&gt;&gt;&gt; </span>math.ceil(math.pi)   <span class="hljs-comment"># 天井関数</span>
+<span class="hljs-number">4</span>
+<span class="hljs-meta">&gt;&gt;&gt; </span>math.lcm(<span class="hljs-number">3</span>, <span class="hljs-number">4</span>)       <span class="hljs-comment"># 最小公倍数</span>
+<span class="hljs-number">12</span>
+<span class="hljs-meta">&gt;&gt;&gt; </span>math.gcd(<span class="hljs-number">8</span>, <span class="hljs-number">12</span>)      <span class="hljs-comment"># 最大公約数</span>
+<span class="hljs-number">4</span>
+<span class="hljs-meta">&gt;&gt;&gt; </span>math.exp(<span class="hljs-number">1</span>)          <span class="hljs-comment"># 指数関数</span>
+<span class="hljs-number">2.718281828459045</span>
+<span class="hljs-meta">&gt;&gt;&gt; </span>math.log(<span class="hljs-number">1</span>)          <span class="hljs-comment"># 対数関数</span>
+<span class="hljs-number">0.0</span>
+</div></code></pre>
+<h3 id="statistics"><a href="https://docs.python.org/ja/3.10/library/statistics.html">statistics</a></h3>
+<p>数理統計関数を集めたモジュール。</p>
+<pre class="hljs"><code><div><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-keyword">import</span> statistics
+<span class="hljs-meta">&gt;&gt;&gt; </span>data = [<span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">7</span>, <span class="hljs-number">7</span>, <span class="hljs-number">9</span>, <span class="hljs-number">3</span>, <span class="hljs-number">5</span>, <span class="hljs-number">3</span>]
+<span class="hljs-meta">&gt;&gt;&gt; </span>statistics.mean(data)    <span class="hljs-comment"># 平均値</span>
+<span class="hljs-number">5.125</span>
+<span class="hljs-meta">&gt;&gt;&gt; </span>statistics.median(data)  <span class="hljs-comment"># 中央値</span>
+<span class="hljs-number">4.5</span>
+<span class="hljs-meta">&gt;&gt;&gt; </span>statistics.mode(data)    <span class="hljs-comment"># モード</span>
+<span class="hljs-number">3</span>
+<span class="hljs-meta">&gt;&gt;&gt; </span>statistics.stdev(data)   <span class="hljs-comment"># 標本標準偏差</span>
+<span class="hljs-number">2.295181287579947</span>
+</div></code></pre>
+<h3 id="itertools"><a href="https://docs.python.org/ja/3.10/library/itertools.html">itertools</a></h3>
+<p>様々なイテレータを構築する関数を集めたモジュール。</p>
+<pre class="hljs"><code><div><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-keyword">import</span> itertools
+<span class="hljs-meta">&gt;&gt;&gt; </span>list(itertools.accumulate([<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>]))   <span class="hljs-comment"># 累積和</span>
+[<span class="hljs-number">1</span>, <span class="hljs-number">3</span>, <span class="hljs-number">6</span>, <span class="hljs-number">10</span>, <span class="hljs-number">15</span>]
+<span class="hljs-meta">&gt;&gt;&gt; </span>list(itertools.chain(<span class="hljs-string">"ABC"</span>, <span class="hljs-string">"DEF"</span>))           <span class="hljs-comment"># 連鎖</span>
+[<span class="hljs-string">'A'</span>, <span class="hljs-string">'B'</span>, <span class="hljs-string">'C'</span>, <span class="hljs-string">'D'</span>, <span class="hljs-string">'E'</span>, <span class="hljs-string">'F'</span>]
+<span class="hljs-meta">&gt;&gt;&gt; </span>list(itertools.product([<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>], [<span class="hljs-number">4</span>, <span class="hljs-number">5</span>]))    <span class="hljs-comment"># デカルト積</span>
+[(<span class="hljs-number">1</span>, <span class="hljs-number">4</span>), (<span class="hljs-number">1</span>, <span class="hljs-number">5</span>), (<span class="hljs-number">2</span>, <span class="hljs-number">4</span>), (<span class="hljs-number">2</span>, <span class="hljs-number">5</span>), (<span class="hljs-number">3</span>, <span class="hljs-number">4</span>), (<span class="hljs-number">3</span>, <span class="hljs-number">5</span>)]
+<span class="hljs-meta">&gt;&gt;&gt; </span>list(itertools.permutations([<span class="hljs-number">1</span>, <span class="hljs-number">3</span>, <span class="hljs-number">5</span>], <span class="hljs-number">2</span>))    <span class="hljs-comment"># 順列    </span>
+[(<span class="hljs-number">1</span>, <span class="hljs-number">3</span>), (<span class="hljs-number">1</span>, <span class="hljs-number">5</span>), (<span class="hljs-number">3</span>, <span class="hljs-number">1</span>), (<span class="hljs-number">3</span>, <span class="hljs-number">5</span>), (<span class="hljs-number">5</span>, <span class="hljs-number">1</span>), (<span class="hljs-number">5</span>, <span class="hljs-number">3</span>)]
+<span class="hljs-meta">&gt;&gt;&gt; </span>list(itertools.combinations([<span class="hljs-number">1</span>, <span class="hljs-number">3</span>, <span class="hljs-number">5</span>], <span class="hljs-number">2</span>))    <span class="hljs-comment"># 組み合わせ </span>
+[(<span class="hljs-number">1</span>, <span class="hljs-number">3</span>), (<span class="hljs-number">1</span>, <span class="hljs-number">5</span>), (<span class="hljs-number">3</span>, <span class="hljs-number">5</span>)]
+</div></code></pre>
+<h3 id="pathlib"><a href="https://docs.python.org/ja/3.10/library/pathlib.html">pathlib</a></h3>
+<p>高級なパス操作を行うためのモジュール。</p>
+<pre class="hljs"><code><div><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-keyword">import</span> pathlib
+<span class="hljs-meta">&gt;&gt;&gt; </span>path = pathlib.Path(<span class="hljs-string">"."</span>)  <span class="hljs-comment"># Pathオブジェクトの作成</span>
+<span class="hljs-meta">&gt;&gt;&gt; </span>file = path / <span class="hljs-string">"monty.py"</span>  <span class="hljs-comment"># パスの連結</span>
+<span class="hljs-meta">&gt;&gt;&gt; </span>file.exists()             <span class="hljs-comment"># パスの存在判定</span>
+<span class="hljs-literal">False</span>
+<span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-comment"># .pyファイルのみをリスト化</span>
+<span class="hljs-meta">&gt;&gt;&gt; </span>[file.name <span class="hljs-keyword">for</span> file <span class="hljs-keyword">in</span> path.iterdir() <span class="hljs-keyword">if</span> file.suffix == <span class="hljs-string">".py"</span>] 
+[<span class="hljs-string">'random_walk.py'</span>]
+<span class="hljs-meta">&gt;&gt;&gt; </span>[file.name <span class="hljs-keyword">for</span> file <span class="hljs-keyword">in</span> path.glob(<span class="hljs-string">"*.py"</span>)]
+[<span class="hljs-string">'random_walk.py'</span>]
+</div></code></pre>
+<p>他にもパス展開やファイル・ディレクトリの作成・削除などの便利なメソッドがある。</p>
+<h3 id="tempfile"><a href="https://docs.python.org/ja/3.10/library/tempfile.html">tempfile</a></h3>
+<p>一時ファイルや一時ディレクトリを安全に作成するためのモジュール。</p>
+<h3 id="shutil"><a href="https://docs.python.org/ja/3.10/library/shutil.html">shutil</a></h3>
+<p>高級なファイル操作を行う関数を集めたモジュール。</p>
+<h3 id="os"><a href="https://docs.python.org/ja/3.10/library/os.html">os</a></h3>
+<p>OS依存の機能を利用するためのモジュール。</p>
+<pre class="hljs"><code><div><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-keyword">import</span> os
+<span class="hljs-meta">&gt;&gt;&gt; </span>os.name
+<span class="hljs-string">'nt'</span>
+<span class="hljs-meta">&gt;&gt;&gt; </span>os.getpid()
+<span class="hljs-number">31332</span>
+</div></code></pre>
+<h3 id="json"><a href="https://docs.python.org/ja/3.10/library/json.html">json</a></h3>
+<p>JSONテキストとPythonオブジェクトを繋ぐモジュール。</p>
+<pre class="hljs"><code><div><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-keyword">import</span> json
+<span class="hljs-meta">&gt;&gt;&gt; </span>alice = {<span class="hljs-string">"name"</span>: <span class="hljs-string">"Alice"</span>, <span class="hljs-string">"age"</span>: <span class="hljs-number">20</span>}
+<span class="hljs-meta">&gt;&gt;&gt; </span>bob = {<span class="hljs-string">"name"</span>: <span class="hljs-string">"Bob"</span>, <span class="hljs-string">"age"</span>: <span class="hljs-number">22</span>}
+<span class="hljs-meta">&gt;&gt;&gt; </span>data = {<span class="hljs-string">"person"</span>: [alice, bob]}
+<span class="hljs-meta">&gt;&gt;&gt; </span>json.dumps(data)
+<span class="hljs-string">'{"person": [{"name": "Alice", "age": 20}, {"name": "Bob", "age": 22}]}'</span>
+<span class="hljs-meta">&gt;&gt;&gt; </span>json.loads(<span class="hljs-string">'{"name": "Charlie", "age": 25}'</span>)
+{<span class="hljs-string">'name'</span>: <span class="hljs-string">'Charlie'</span>, <span class="hljs-string">'age'</span>: <span class="hljs-number">25</span>}
+</div></code></pre>
+<h3 id="concurrentfutures"><a href="https://docs.python.org/ja/3.10/library/concurrent.futures.html">concurrent.futures</a></h3>
+<p>並列タスクを実現するためのモジュール。</p>
+<pre class="hljs"><code><div><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-keyword">import</span> concurrent.futures <span class="hljs-keyword">as</span> cf
+<span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">task</span><span class="hljs-params">(i)</span>:</span>
+<span class="hljs-meta">... </span>    time.sleep(i)
+<span class="hljs-meta">... </span>    <span class="hljs-keyword">return</span> i
+...
+<span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-keyword">with</span> cf.ThreadPoolExecutor(max_workers=<span class="hljs-number">4</span>) <span class="hljs-keyword">as</span> executor:  <span class="hljs-comment"># マルチスレッドで処理する</span>
+<span class="hljs-meta">... </span>    futures = [executor.submit(task, i) <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(<span class="hljs-number">10</span>)]
+<span class="hljs-meta">... </span>    results = [future.result() <span class="hljs-keyword">for</span> future <span class="hljs-keyword">in</span> cf.as_completed(futures)]
+<span class="hljs-meta">... </span>
+<span class="hljs-meta">&gt;&gt;&gt; </span>print(results)
+[<span class="hljs-number">0</span>, <span class="hljs-number">2</span>, <span class="hljs-number">1</span>, <span class="hljs-number">3</span>, <span class="hljs-number">6</span>, <span class="hljs-number">5</span>, <span class="hljs-number">4</span>, <span class="hljs-number">7</span>, <span class="hljs-number">9</span>, <span class="hljs-number">8</span>]                              <span class="hljs-comment"># 結果は一意ではない</span>
+</div></code></pre>
+<div class="page">
+<h2 id="%E3%82%B5%E3%83%BC%E3%83%89%E3%83%91%E3%83%BC%E3%83%86%E3%82%A3%E3%83%A9%E3%82%A4%E3%83%96%E3%83%A9%E3%83%AA%E3%82%92%E4%BD%BF%E7%94%A8%E3%81%99%E3%82%8B">サードパーティライブラリを使用する</h2>
+<h3 id="pypi">PyPI</h3>
+<p>Pythonのパッケージはユーザが自由に開発することができて、その多くはPyPI(Python Package Index)で公開されている。</p>
+<p>このセクションではPyPIからサードパーティライブラリをインストール・管理する方法を学ぶ。</p>
+<h3 id="pip">pip</h3>
+<p>PyPIからパッケージをインストールするには<code>pip</code>というツールが必要である。
+<code>pip</code>は通常Pythonをインストールしたときに一緒にインストールされる。</p>
+<p>初めに<code>pip</code>のバージョンを確認する。</p>
+<pre class="hljs"><code><div>$ pip --version 
+<span class="hljs-comment"># または</span>
+$ python -m pip --version
+</div></code></pre>
+<p>次に<code>pip</code>を最新版へ更新する。</p>
+<pre class="hljs"><code><div>$ pip install --upgrade pip
+</div></code></pre>
+<p>パッケージをインストールするには<code>pip install パッケージ名</code>を実行する。<br>
+試しにHTTPリクエストを送るためのパッケージ<code>requests</code>をインストールしてみる。</p>
+<pre class="hljs"><code><div>$ pip install requests
+</div></code></pre>
+<p>現在インストール済みのパッケージを確認する。</p>
+<pre class="hljs"><code><div>$ pip list
+</div></code></pre>
+<p>パッケージの詳細を確認する。</p>
+<pre class="hljs"><code><div>$ pip show requests
+</div></code></pre>
+<p>パッケージをアンインストールする。</p>
+<pre class="hljs"><code><div>$ pip uninstall requests
+</div></code></pre>
+<p><code>requirements.txt</code>ファイルから一括インストールする。</p>
+<pre class="hljs"><code><div>$ pip install -r requirements.txt
+</div></code></pre>
+<p>バージョンを指定してインストールする。</p>
+<pre class="hljs"><code><div>$ pip install requests==2.27.1
+</div></code></pre>
+<h3 id="%E3%82%88%E3%81%8F%E4%BD%BF%E7%94%A8%E3%81%99%E3%82%8B%E3%82%B5%E3%83%BC%E3%83%89%E3%83%91%E3%83%BC%E3%83%86%E3%82%A3%E3%83%A9%E3%82%A4%E3%83%96%E3%83%A9%E3%83%AA">よく使用するサードパーティライブラリ</h3>
+<p>知っておいたほうがよいサードパティライブラリをいくつか紹介する。</p>
+<h4 id="numpy"><a href="https://numpy.org/">Numpy</a></h4>
+<p>ベクトルや行列といった、より高度な数学概念を実装したライブラリ。<br>
+中身はBLASで実装されているため、非常に高速に動作し、メモリ効率も良い。</p>
+<pre class="hljs"><code><div>$ pip install numpy
+</div></code></pre>
+<pre class="hljs"><code><div><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np
+<span class="hljs-meta">&gt;&gt;&gt; </span>x = np.array([<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">5</span>, <span class="hljs-number">10</span>])    <span class="hljs-comment"># 配列を作成 (ベクトルに対応)</span>
+<span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-number">2</span> * x                          <span class="hljs-comment"># スカラー演算はブロードキャストされる</span>
+array([ <span class="hljs-number">2</span>,  <span class="hljs-number">4</span>, <span class="hljs-number">10</span>, <span class="hljs-number">20</span>])
+<span class="hljs-meta">&gt;&gt;&gt; </span>x + <span class="hljs-number">2</span>
+array([ <span class="hljs-number">3</span>,  <span class="hljs-number">4</span>,  <span class="hljs-number">7</span>, <span class="hljs-number">12</span>])
+<span class="hljs-meta">&gt;&gt;&gt; </span>np.exp(x)                      <span class="hljs-comment"># numpy関数もブロードキャストされる</span>
+array([<span class="hljs-number">2.71828183e+00</span>, <span class="hljs-number">7.38905610e+00</span>, <span class="hljs-number">1.48413159e+02</span>, <span class="hljs-number">2.20264658e+04</span>])
+<span class="hljs-meta">&gt;&gt;&gt; </span>y = <span class="hljs-number">2</span> * x
+<span class="hljs-meta">&gt;&gt;&gt; </span>x @ y                          <span class="hljs-comment"># ドット積</span>
+<span class="hljs-number">260</span>
+<span class="hljs-meta">&gt;&gt;&gt; </span>x * y                        　<span class="hljs-comment"># 要素積</span>
+array([  <span class="hljs-number">2</span>,   <span class="hljs-number">8</span>,  <span class="hljs-number">50</span>, <span class="hljs-number">200</span>])
+<span class="hljs-meta">&gt;&gt;&gt; </span>np.cross([<span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>], [<span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>]) <span class="hljs-comment"># クロス積</span>
+array([<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>])
+</div></code></pre>
+<h4 id="matplotlib"><a href="https://matplotlib.org/">Matplotlib</a></h4>
+<p>メジャーなグラフ描画ライブラリ。<br>
+2003年発の歴史あるライブラリなので、ノウハウをインターネット上で見つけやすい。</p>
+<pre class="hljs"><code><div>$ pip install matplotlib
+</div></code></pre>
+<pre class="hljs"><code><div><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np
+<span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt
+<span class="hljs-meta">&gt;&gt;&gt; </span>x = np.linspace(<span class="hljs-number">0</span>, <span class="hljs-number">2</span>, <span class="hljs-number">100</span>) * np.pi
+<span class="hljs-meta">&gt;&gt;&gt; </span>y = np.sin(x)
+<span class="hljs-meta">&gt;&gt;&gt; </span>fig, ax = plt.subplots()
+<span class="hljs-meta">&gt;&gt;&gt; </span>ax.plot(x, y)              <span class="hljs-comment"># プロット</span>
+[&lt;matplotlib.lines.Line2D object at <span class="hljs-number">0x0000022A953456C0</span>&gt;]
+<span class="hljs-meta">&gt;&gt;&gt; </span>fig.show()                 <span class="hljs-comment"># グラフを表示</span>
+<span class="hljs-meta">&gt;&gt;&gt; </span>fig.savefig(<span class="hljs-string">"sin.png"</span>)     <span class="hljs-comment"># 画像として保存</span>
+</div></code></pre>
+<p><img src="../images/sin.png" alt="sin関数"></p>
+<p>GIF画像も作れる。</p>
+<pre class="hljs"><code><div><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-keyword">import</span> matplotlib.animation <span class="hljs-keyword">as</span> anime
+<span class="hljs-meta">&gt;&gt;&gt; </span>fig, ax = plt.subplots()
+<span class="hljs-meta">&gt;&gt;&gt; </span>x = np.linspace(<span class="hljs-number">0</span>, <span class="hljs-number">2</span>, <span class="hljs-number">200</span>) * np.pi
+<span class="hljs-meta">&gt;&gt;&gt; </span>t = x
+<span class="hljs-meta">&gt;&gt;&gt; </span>ax.set_xlim(x[<span class="hljs-number">0</span>], x[<span class="hljs-number">-1</span>])
+(<span class="hljs-number">0.0</span>, <span class="hljs-number">6.283185307179586</span>)
+<span class="hljs-meta">&gt;&gt;&gt; </span>images = list(map(<span class="hljs-keyword">lambda</span> t: ax.plot(x, np.sin(x - t), c=<span class="hljs-string">"tab:blue"</span>), t))
+<span class="hljs-meta">&gt;&gt;&gt; </span>animation = anime.ArtistAnimation(fig, images, interval=<span class="hljs-number">50</span>)
+<span class="hljs-meta">&gt;&gt;&gt; </span>plt.show()
+<span class="hljs-meta">&gt;&gt;&gt; </span>animation.save(<span class="hljs-string">"sin_wave.gif"</span>)
+</div></code></pre>
+<p><img src="../images/sin_wave.gif" alt="sin波"></p>
+<p>3Dもいける。</p>
+<pre class="hljs"><code><div><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-keyword">import</span> mpl_toolkits.mplot3d
+<span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np
+<span class="hljs-meta">&gt;&gt;&gt; </span>fig = plt.figure()
+<span class="hljs-meta">&gt;&gt;&gt; </span>ax = fig.add_subplot(<span class="hljs-number">111</span>, projection=<span class="hljs-string">"3d"</span>)
+<span class="hljs-meta">&gt;&gt;&gt; </span>t = np.linspace(<span class="hljs-number">0</span>, <span class="hljs-number">2</span>, <span class="hljs-number">50</span>) * np.pi
+<span class="hljs-meta">&gt;&gt;&gt; </span>x, y = np.meshgrid(t, t)
+<span class="hljs-meta">&gt;&gt;&gt; </span>ax.set_xlim(t[<span class="hljs-number">0</span>], t[<span class="hljs-number">-1</span>])
+(<span class="hljs-number">0.0</span>, <span class="hljs-number">6.283185307179586</span>)
+<span class="hljs-meta">&gt;&gt;&gt; </span>ax.set_ylim(t[<span class="hljs-number">0</span>], t[<span class="hljs-number">-1</span>])
+(<span class="hljs-number">0.0</span>, <span class="hljs-number">6.283185307179586</span>)
+<span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">update</span><span class="hljs-params">(frame)</span>:</span>
+<span class="hljs-meta">... </span>    ax.clear()
+<span class="hljs-meta">... </span>    <span class="hljs-keyword">return</span> ax.plot_surface(x, y, np.sin(x-frame) + np.cos(y-frame))
+...
+<span class="hljs-meta">&gt;&gt;&gt; </span>animation = anime.FuncAnimation(fig, update, frames=t, interval=<span class="hljs-number">50</span>)
+<span class="hljs-meta">&gt;&gt;&gt; </span>plt.show()
+<span class="hljs-meta">&gt;&gt;&gt; </span>animation.save(<span class="hljs-string">"3d_wave.gif"</span>)
+</div></code></pre>
+<p><img src="../images/3d_wave.gif" alt="二次元波"></p>
+<h4 id="plotly"><a href="https://plotly.com/python/">Plotly</a></h4>
+<p>後発のグラフ描画ライブラリ。<br>
+WEB上で動くインタラクティブなグラフが特徴的で、データ分析アプリケーションのデファクトスタンダードになりつつある。<br>
+<a href="https://plotly.com/graphing-libraries/">R, Julia, JavaScript, MATLABで動作する</a>ため、データサイエンティストをメインターゲットにしていることが伺える。</p>
+<pre class="hljs"><code><div>$ pip install plotly
+</div></code></pre>
+<pre class="hljs"><code><div><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-keyword">import</span> plotly.express <span class="hljs-keyword">as</span> px
+<span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np
+<span class="hljs-meta">&gt;&gt;&gt; </span>x = np.linspace(<span class="hljs-number">0</span>, <span class="hljs-number">2</span> * np.pi, <span class="hljs-number">100</span>)
+<span class="hljs-meta">&gt;&gt;&gt; </span>fig = px.line(x=x, y=np.sin(x))
+<span class="hljs-meta">&gt;&gt;&gt; </span>fig.show()
+<span class="hljs-meta">&gt;&gt;&gt; </span>fig.write_image(<span class="hljs-string">"plotly_sin.png"</span>)
+</div></code></pre>
+<iframe src="../images/plotly_sin.html" width=640 height=480 frameborder="no"></iframe>
+<p>散布図を描く。</p>
+<pre class="hljs"><code><div><span class="hljs-meta">&gt;&gt;&gt; </span>df = px.data.iris()
+<span class="hljs-meta">&gt;&gt;&gt; </span>fig = px.scatter(df, x=<span class="hljs-string">"sepal_length"</span>, y=<span class="hljs-string">"sepal_width"</span>, color=<span class="hljs-string">"species"</span>)
+<span class="hljs-meta">&gt;&gt;&gt; </span>fig.show()
+</div></code></pre>
+<iframe src="../images/plotly_scatter.html" width=640 height=480 frameborder="no"></iframe>
+<pre class="hljs"><code><div><span class="hljs-meta">&gt;&gt;&gt; </span>fig = px.scatter_3d(df, x=<span class="hljs-string">"sepal_length"</span>, y=<span class="hljs-string">"sepal_width"</span>, z=<span class="hljs-string">"petal_width"</span>, color=<span class="hljs-string">"species"</span>)
+<span class="hljs-meta">&gt;&gt;&gt; </span>fig.show()
+</div></code></pre>
+<iframe src="../images/plotly_scatter_3d.html" width=640 height=480 frameborder="no"></iframe>
+<h4 id="pandas"><a href="https://pandas.pydata.org">Pandas</a></h4>
+<p>データフレームライブラリ。<br>
+CSVやExcelのような表データを「データフレーム」として扱う。
+主にデータ分析に用いる。</p>
+<pre class="hljs"><code><div><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-keyword">import</span> pandas <span class="hljs-keyword">as</span> pd
+<span class="hljs-meta">&gt;&gt;&gt; </span>iris_csv = <span class="hljs-string">"""https://gist.github.com/netj/8836201\
+<span class="hljs-meta">... </span>/raw/6f9306ad21398ea43cba4f7d537619d0e07d5ae3/iris.csv"""</span>
+<span class="hljs-meta">&gt;&gt;&gt; </span>df = pd.read_csv(iris_csv)
+<span class="hljs-meta">&gt;&gt;&gt; </span>df.head()
+   sepal.length  sepal.width  petal.length  petal.width variety
+<span class="hljs-number">0</span>           <span class="hljs-number">5.1</span>          <span class="hljs-number">3.5</span>           <span class="hljs-number">1.4</span>          <span class="hljs-number">0.2</span>  Setosa       
+<span class="hljs-number">1</span>           <span class="hljs-number">4.9</span>          <span class="hljs-number">3.0</span>           <span class="hljs-number">1.4</span>          <span class="hljs-number">0.2</span>  Setosa       
+<span class="hljs-number">2</span>           <span class="hljs-number">4.7</span>          <span class="hljs-number">3.2</span>           <span class="hljs-number">1.3</span>          <span class="hljs-number">0.2</span>  Setosa       
+<span class="hljs-number">3</span>           <span class="hljs-number">4.6</span>          <span class="hljs-number">3.1</span>           <span class="hljs-number">1.5</span>          <span class="hljs-number">0.2</span>  Setosa       
+<span class="hljs-number">4</span>           <span class="hljs-number">5.0</span>          <span class="hljs-number">3.6</span>           <span class="hljs-number">1.4</span>          <span class="hljs-number">0.2</span>  Setosa
+<span class="hljs-meta">&gt;&gt;&gt; </span>df.describe()
+       sepal.length  sepal.width  petal.length  petal.width
+count    <span class="hljs-number">150.000000</span>   <span class="hljs-number">150.000000</span>    <span class="hljs-number">150.000000</span>   <span class="hljs-number">150.000000</span>
+mean       <span class="hljs-number">5.843333</span>     <span class="hljs-number">3.057333</span>      <span class="hljs-number">3.758000</span>     <span class="hljs-number">1.199333</span>
+std        <span class="hljs-number">0.828066</span>     <span class="hljs-number">0.435866</span>      <span class="hljs-number">1.765298</span>     <span class="hljs-number">0.762238</span>
+min        <span class="hljs-number">4.300000</span>     <span class="hljs-number">2.000000</span>      <span class="hljs-number">1.000000</span>     <span class="hljs-number">0.100000</span>
+<span class="hljs-number">25</span>%        <span class="hljs-number">5.100000</span>     <span class="hljs-number">2.800000</span>      <span class="hljs-number">1.600000</span>     <span class="hljs-number">0.300000</span>
+<span class="hljs-number">50</span>%        <span class="hljs-number">5.800000</span>     <span class="hljs-number">3.000000</span>      <span class="hljs-number">4.350000</span>     <span class="hljs-number">1.300000</span>
+<span class="hljs-number">75</span>%        <span class="hljs-number">6.400000</span>     <span class="hljs-number">3.300000</span>      <span class="hljs-number">5.100000</span>     <span class="hljs-number">1.800000</span>
+max        <span class="hljs-number">7.900000</span>     <span class="hljs-number">4.400000</span>      <span class="hljs-number">6.900000</span>     <span class="hljs-number">2.500000</span>
+</div></code></pre>
+<h4 id="requests"><a href="https://requests.readthedocs.io">Requests</a></h4>
+<p>HTTP（Hyper Text Transfer Protocol)の人間向きインターフェースを実装したライブラリ。<br>
+HTTPには様々なメソッドが存在するが、我々がよく使用するのはGETメソッドとPOSTメソッドである。</p>
+<ul>
+<li>GET: ウェブサーバーからデータを取得する</li>
+<li>POST: ウェブサーバーにデータを送信する</li>
+</ul>
+<p>See Also</p>
+<ul>
+<li><a href="https://developer.mozilla.org/ja/docs/Web/HTTP/Methods">https://developer.mozilla.org/ja/docs/Web/HTTP/Methods</a></li>
+<li><a href="https://developer.mozilla.org/ja/docs/Web/HTTP/Status">https://developer.mozilla.org/ja/docs/Web/HTTP/Status</a></li>
+</ul>
+<pre class="hljs"><code><div>$ pip intall requests
+</div></code></pre>
+<pre class="hljs"><code><div><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-keyword">import</span> requests
+<span class="hljs-meta">&gt;&gt;&gt; </span>url = <span class="hljs-string">"https://google.com"</span>
+<span class="hljs-meta">&gt;&gt;&gt; </span>response = requests.get(url)                   <span class="hljs-comment"># GETメソッドを実行</span>
+<span class="hljs-meta">&gt;&gt;&gt; </span>response.status_code                           <span class="hljs-comment"># ステータスコードの取得</span>
+<span class="hljs-number">200</span>
+<span class="hljs-meta">&gt;&gt;&gt; </span>response.raise_for_status()                    <span class="hljs-comment"># 404 Not Found等で例外が送出される</span>
+
+<span class="hljs-meta">&gt;&gt;&gt; </span>response.content                               <span class="hljs-comment"># 取得したバイトデータ</span>
+<span class="hljs-comment"># 省略</span>
+<span class="hljs-meta">&gt;&gt;&gt; </span>response.text                                  <span class="hljs-comment"># 取得したテキストデータ   </span>
+<span class="hljs-comment"># 省略</span>
+</div></code></pre>
+<h4 id="beautifulsoup4"><a href="https://www.crummy.com/software/BeautifulSoup/bs4/">BeautifulSoup4</a></h4>
+<p>HTML(Hyper Text Markup Language)を解析するライブラリ。<br>
+HTMLテキストから任意の情報を簡単に抽出することができる。</p>
+<p>ブラウザでリンクとして表示されているのは<code>&lt;a&gt;</code>タグ要素である。</p>
+<p>See Also</p>
+<ul>
+<li><a href="https://developer.mozilla.org/ja/docs/Web/HTML/Element">https://developer.mozilla.org/ja/docs/Web/HTML/Element</a></li>
+</ul>
+<pre class="hljs"><code><div>$ pip install beautifulsoup4
+</div></code></pre>
+<pre class="hljs"><code><div><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-keyword">import</span> bs4
+<span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-keyword">import</span> requests
+<span class="hljs-meta">&gt;&gt;&gt; </span>url = <span class="hljs-string">"https://google.com"</span>
+<span class="hljs-meta">&gt;&gt;&gt; </span>response = requests.get(url)
+<span class="hljs-meta">&gt;&gt;&gt; </span>soup = bs4.BeautifulSoup(response.content, <span class="hljs-string">"html.parser"</span>)
+<span class="hljs-meta">&gt;&gt;&gt; </span>tag = soup.find(<span class="hljs-string">"a"</span>)              <span class="hljs-comment"># &lt;a&gt;タグを検索</span>
+<span class="hljs-meta">&gt;&gt;&gt; </span>tag
+&lt;a <span class="hljs-class"><span class="hljs-keyword">class</span>="<span class="hljs-title">gb1</span>" <span class="hljs-title">href</span>="<span class="hljs-title">https</span>:</span>//www.google.co.jp/imghp?hl=ja&amp;amp;tab=wi<span class="hljs-string">"&gt;画像&lt;/a&gt;
+&gt;&gt;&gt; tag.text                          # タグのテキストを取得
+'画像'
+&gt;&gt;&gt; tag.get("</span>hre<span class="hljs-string">f")                   # タグの属性を取得
+'https://www.google.co.jp/imghp?hl=ja&amp;tab=wi'
+&gt;&gt;&gt; for tag in soup.find_all("</span>a<span class="hljs-string">"):    # &lt;a&gt;タグを全て検索
+...     print(tag)
+... 
+&lt;a class="</span>gb1<span class="hljs-string">" href="</span>https://www.google.co.jp/imghp?hl=ja&amp;amp;tab=wi<span class="hljs-string">"&gt;画像&lt;/a&gt;
+&lt;a class="</span>gb1<span class="hljs-string">" href="</span>https://maps.google.co.jp/maps?hl=ja&amp;amp;tab=wl<span class="hljs-string">"&gt;マップ&lt;/a&gt;
+&lt;a class="</span>gb1<span class="hljs-string">" href="</span>https://play.google.com/?hl=ja&amp;amp;tab=w8<span class="hljs-string">"&gt;Play&lt;/a&gt;
+&lt;a class="</span>gb1<span class="hljs-string">" href="</span>https://www.youtube.com/?gl=JP&amp;amp;tab=w1<span class="hljs-string">"&gt;YouTube&lt;/a&gt;
+&lt;a class="</span>gb1<span class="hljs-string">" href="</span>https://news.google.com/?tab=wn<span class="hljs-string">"&gt;ニュース&lt;/a&gt;
+&lt;a class="</span>gb1<span class="hljs-string">" href="</span>https://mail.google.com/mail/?tab=wm<span class="hljs-string">"&gt;Gmail&lt;/a&gt;
+&lt;a class="</span>gb1<span class="hljs-string">" href="</span>https://drive.google.com/?tab=wo<span class="hljs-string">"&gt;ドライブ&lt;/a&gt;
+&lt;a class="</span>gb1<span class="hljs-string">" href="</span>https://www.google.co.jp/intl/ja/about/products?tab=wh<span class="hljs-string">" style="</span>text-decoration:none<span class="hljs-string">"&gt;&lt;u&gt;もっと見る&lt;/u&gt; »&lt;/a&gt;
+&lt;a class="</span>gb4<span class="hljs-string">" href="</span>http://www.google.co.jp/history/optout?hl=ja<span class="hljs-string">"&gt;ウェブ履歴&lt;/a&gt;
+&lt;a class="</span>gb4<span class="hljs-string">" href="</span>/preferences?hl=ja<span class="hljs-string">"&gt;設定&lt;/a&gt;
+&lt;a class="</span>gb4<span class="hljs-string">" href="</span>https://accounts.google.com/ServiceLogin?hl=ja&amp;amp;passive=true&amp;amp;<span class="hljs-keyword">continue</span>=https://www.google.com/&amp;amp;ec=GAZAAQ<span class="hljs-string">" id="</span>gb_70<span class="hljs-string">" target="</span>_top<span class="hljs-string">"&gt;ログイン&lt;/a&gt;        
+&lt;a href="</span>/advanced_search?hl=ja&amp;amp;authuser=<span class="hljs-number">0</span><span class="hljs-string">"&gt;検索オプション&lt;/a&gt;
+&lt;a href="</span>http://www.google.co.jp/intl/ja/services/<span class="hljs-string">"&gt;ビジネス ソリューション&lt;/a&gt;
+&lt;a href="</span>/intl/ja/about.html<span class="hljs-string">"&gt;Google について&lt;/a&gt;
+&lt;a href="</span>https://www.google.com/setprefdomain?prefdom=JP&amp;amp;prev=https://www.google.co.jp/&amp;amp;sig=K_FkxzWFTT<span class="hljs-number">-3</span>CO0HCQCDUYHqsaspo%<span class="hljs-number">3</span>D<span class="hljs-string">"&gt;Google.co.jp&lt;/a&gt;
+&lt;a href="</span>/intl/ja/policies/privacy/<span class="hljs-string">"&gt;プライバシー&lt;/a&gt;
+&lt;a href="</span>/intl/ja/policies/terms/<span class="hljs-string">"&gt;規約&lt;/a&gt;
+</span></div></code></pre>
+<h4 id="selenium"><a href="https://www.selenium.dev">Selenium</a></h4>
+<p>ブラウザを操作するためのライブラリ。<br>
+元々はブラウザテストを自動化するためにJavaで実装されたライブラリである。<br>
+使いこなせればブラウザ作業は全てプログラムで自動化できるようになる。</p>
+<p>以下ではGoogle Chrome/Chromiumブラウザを操作する例を示す。</p>
+<pre class="hljs"><code><div>$ pip install selenium chromedriver-binary-auto
+</div></code></pre>
+<p>Googleで「Python」と検索してスクリーンショットを保存する。</p>
+<pre class="hljs"><code><div><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-keyword">import</span> selenium.webdriver <span class="hljs-keyword">as</span> wd
+<span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-keyword">from</span> selenium.webdriver.common.by <span class="hljs-keyword">import</span> By
+<span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-keyword">from</span> selenium.webdriver.common.keys <span class="hljs-keyword">import</span> Keys
+<span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-keyword">import</span> chromedriver_binary
+<span class="hljs-meta">&gt;&gt;&gt; </span>options = wd.ChromeOptions()
+<span class="hljs-meta">&gt;&gt;&gt; </span>driver = wd.Chrome(options=options)
+<span class="hljs-meta">&gt;&gt;&gt; </span>search_box = driver.find_element(By.NAME, <span class="hljs-string">"q"</span>)
+<span class="hljs-meta">&gt;&gt;&gt; </span>search_box.send_keys(<span class="hljs-string">"Python"</span>)
+<span class="hljs-meta">&gt;&gt;&gt; </span>search_box.send_keys(Keys.RETURN)       
+<span class="hljs-meta">&gt;&gt;&gt; </span>driver.save_screenshot(<span class="hljs-string">"selenium.png"</span>)
+<span class="hljs-literal">True</span>
+<span class="hljs-meta">&gt;&gt;&gt; </span>driver.quit()   <span class="hljs-comment"># 終了するときは必ず呼び出す（メモリリークの原因になる）</span>
+</div></code></pre>
+<p><img src="../images/selenium.png" alt="Seleniumのスクリーンショット"></p>
+<h4 id="openpyxl"><a href="https://openpyxl.readthedocs.io">OpenPyXL</a></h4>
+<p>ExcelファイルをPythonで操作するためのライブラリ。</p>
+<pre class="hljs"><code><div>$ pip install openpyxl
+</div></code></pre>
+<p>ワークブックへの書き込み。</p>
+<pre class="hljs"><code><div><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-keyword">import</span> openpyxl
+<span class="hljs-meta">&gt;&gt;&gt; </span>wb = openpyxl.Workbook()             <span class="hljs-comment"># ワークブックを作成</span>
+<span class="hljs-meta">&gt;&gt;&gt; </span>ws = wb.active                       <span class="hljs-comment"># アクティブなシートを取得</span>
+<span class="hljs-meta">&gt;&gt;&gt; </span>ws[<span class="hljs-string">"A1"</span>] = <span class="hljs-number">42</span>                        <span class="hljs-comment"># セルに値を入力</span>
+<span class="hljs-meta">&gt;&gt;&gt; </span>ws.append([<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>])                 <span class="hljs-comment"># 行を追加</span>
+<span class="hljs-meta">&gt;&gt;&gt; </span>ws.title = <span class="hljs-string">"Title here"</span>              <span class="hljs-comment"># シートタイトルを更新</span>
+<span class="hljs-meta">&gt;&gt;&gt; </span>ws2 = wb.create_sheet(title=<span class="hljs-string">"Data"</span>)  <span class="hljs-comment"># 新しいシートを作成</span>
+<span class="hljs-meta">&gt;&gt;&gt; </span>wb.save(<span class="hljs-string">"openpyxl.xlsx"</span>)             <span class="hljs-comment"># ワークブックを保存</span>
+</div></code></pre>
+<p>ワークブックの読み込み。</p>
+<pre class="hljs"><code><div><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-comment"># ワークブックのロード</span>
+<span class="hljs-meta">&gt;&gt;&gt; </span>wb = openpyxl.load_workbook(<span class="hljs-string">"openpyxl.xlsx"</span>) 
+<span class="hljs-meta">&gt;&gt;&gt; </span>wb.sheetnames                        <span class="hljs-comment"># シート名を取得</span>
+[<span class="hljs-string">'Title here'</span>, <span class="hljs-string">'Data'</span>]
+<span class="hljs-meta">&gt;&gt;&gt; </span>ws = wb[<span class="hljs-string">"Title here"</span>]                <span class="hljs-comment"># シートを取得</span>
+<span class="hljs-meta">&gt;&gt;&gt; </span>ws[<span class="hljs-string">"A1"</span>].value                       <span class="hljs-comment"># セルの値を取得</span>
+<span class="hljs-number">42</span>
+</div></code></pre>
+<h4 id="python-pptx"><a href="https://python-pptx.readthedocs.io/en/latest/">python-pptx</a></h4>
+<p>PowerPointファイルを作成・編集するためのライブラリ。</p>
+<pre class="hljs"><code><div>$ pip install python-pptx
+</div></code></pre>
+<pre class="hljs"><code><div><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-keyword">import</span> pptx
+<span class="hljs-meta">&gt;&gt;&gt; </span>prs = pptx.Presentation()                         <span class="hljs-comment"># プレゼンテーションを作成</span>
+<span class="hljs-meta">&gt;&gt;&gt; </span>title_slide_layout = prs.slide_layouts[<span class="hljs-number">0</span>]         <span class="hljs-comment"># レイアウトを取得</span>
+<span class="hljs-meta">&gt;&gt;&gt; </span>slide = prs.slides.add_slide(title_slide_layout)  <span class="hljs-comment"># スライドを追加</span>
+<span class="hljs-meta">&gt;&gt;&gt; </span>title = slide.shapes.title                        <span class="hljs-comment"># タイトルボックスを取得</span>
+<span class="hljs-meta">&gt;&gt;&gt; </span>subtitle = slide.placeholders[<span class="hljs-number">1</span>]                  <span class="hljs-comment"># サブタイトルボックスを取得</span>
+<span class="hljs-meta">&gt;&gt;&gt; </span>title.text = <span class="hljs-string">"Hello, World!"</span>                      <span class="hljs-comment"># タイトルを更新</span>
+<span class="hljs-meta">&gt;&gt;&gt; </span>subtitle.text = <span class="hljs-string">"python-pptx was here!"</span>           <span class="hljs-comment"># サブタイトルを更新</span>
+<span class="hljs-meta">&gt;&gt;&gt; </span>prs.save(<span class="hljs-string">"python-pptx.pptx"</span>)                      <span class="hljs-comment"># プレゼンテーションを保存</span>
+</div></code></pre>
+<h4 id="pyautogui"><a href="https://pyautogui.readthedocs.io/en/latest/index.html">PyAutoGUI</a></h4>
+<p>GUIを自動化するためのライブラリ。<br>
+マウス操作やキー入力操作を自動化できる。</p>
+<pre class="hljs"><code><div>$ pip install pyautogui
+</div></code></pre>
+<pre class="hljs"><code><div><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-keyword">import</span> pyautogui
+<span class="hljs-meta">&gt;&gt;&gt; </span>pyautogui.position()
+Point(x=<span class="hljs-number">1435</span>, y=<span class="hljs-number">974</span>)
+<span class="hljs-meta">&gt;&gt;&gt; </span>pyautogui.moveTo(<span class="hljs-number">100</span>, <span class="hljs-number">150</span>)   　　　　　<span class="hljs-comment"># マウスを絶対座標へ移動</span>
+<span class="hljs-meta">&gt;&gt;&gt; </span>pyautogui.move(<span class="hljs-number">100</span>, <span class="hljs-number">300</span>, duration=<span class="hljs-number">2</span>)  <span class="hljs-comment"># 2秒かけてマウスを絶対座標へ移動</span>
+<span class="hljs-meta">&gt;&gt;&gt; </span>pyautogui.move(<span class="hljs-number">100</span>, <span class="hljs-number">150</span>)              <span class="hljs-comment"># マウスを相対座標へ移動</span>
+<span class="hljs-meta">&gt;&gt;&gt; </span>pyautogui.click()                     <span class="hljs-comment"># マウスをクリック</span>
+<span class="hljs-meta">&gt;&gt;&gt; </span>pyautogui.doubleClick()               <span class="hljs-comment"># マウスをダブルクリック</span>
+<span class="hljs-meta">&gt;&gt;&gt; </span>pyautogui.write(<span class="hljs-string">"print('Hello')"</span>)     <span class="hljs-comment"># 文字を入力</span>
+<span class="hljs-meta">&gt;&gt;&gt; </span>print(<span class="hljs-string">'Hello'</span>)
+Hello
+<span class="hljs-meta">&gt;&gt;&gt; </span>pyautogui.press(<span class="hljs-string">"Win"</span>)                <span class="hljs-comment"># キーを入力</span>
+<span class="hljs-meta">&gt;&gt;&gt; </span>pyautogui.hotkey(<span class="hljs-string">"Win"</span>, <span class="hljs-string">"d"</span>)          <span class="hljs-comment"># ホットキーを入力</span>
+<span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-keyword">with</span> pyautogui.hold(<span class="hljs-string">"shift"</span>):         <span class="hljs-comment"># キーをホールド</span>
+<span class="hljs-meta">... </span>    pyautogui.hotkey(<span class="hljs-string">"Win"</span>, <span class="hljs-string">"s"</span>)
+...
+</div></code></pre>
+<h4 id="tlab"><a href="https://github.com/huisint/tlab">tlab</a></h4>
+<p>筆者が開発している研究室用のライブラリ。<br>
+現在(2022/05/26)は<a href="https://github.com/huisint/tlab">GitHub</a>からのみインストール可能である。</p>
+<pre class="hljs"><code><div>$ pip install git+https://github.com/huisint/tlab
+</div></code></pre>
+<p>GoogleのAPIを使用する。
+APIはWasedaアカウントでなければ使用できない。</p>
+<pre class="hljs"><code><div><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-keyword">from</span> tlab <span class="hljs-keyword">import</span> google
+<span class="hljs-meta">&gt;&gt;&gt; </span>creds = google.Credentials.new()                     <span class="hljs-comment"># 認証情報の取得</span>
+<span class="hljs-meta">&gt;&gt;&gt; </span>api = google.GmailAPI(creds)                         <span class="hljs-comment"># GmailAPIインスタンスの作成</span>
+<span class="hljs-meta">&gt;&gt;&gt; </span>query = <span class="hljs-string">'subject:("Laboratory Seminar Invitation")'</span>  <span class="hljs-comment"># Gmailの検索ボックスと同じフォーマットのクエリ</span>
+<span class="hljs-meta">&gt;&gt;&gt; </span>api.search_email(query)                              <span class="hljs-comment"># メールを検索</span>
+<span class="hljs-comment"># 省略</span>
+<span class="hljs-meta">&gt;&gt;&gt; </span>gmail = api.get_email(<span class="hljs-string">"180ff484260f064b"</span>)            <span class="hljs-comment"># メールを取得</span>
+<span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-keyword">for</span> header <span class="hljs-keyword">in</span> gmail[<span class="hljs-string">"payload"</span>][<span class="hljs-string">"headers"</span>]:
+<span class="hljs-meta">... </span>    <span class="hljs-keyword">if</span> header[<span class="hljs-string">"name"</span>] == <span class="hljs-string">"Subject"</span>:
+<span class="hljs-meta">... </span>            print(header[<span class="hljs-string">"value"</span>])
+<span class="hljs-meta">... </span>
+Laboratory Seminar Invitation
+</div></code></pre>
+<h3 id="%E3%81%9D%E3%81%AE%E4%BB%96%E3%81%AE%E3%83%A9%E3%82%A4%E3%83%96%E3%83%A9%E3%83%AA">その他のライブラリ</h3>
+<p>より高度なアプリケーションのためのライブラリを挙げる。</p>
+<h4 id="pillow"><a href="https://python-pptx.readthedocs.io/en/latest/">Pillow</a></h4>
+<p>画像処理ライブラリ。</p>
+<pre class="hljs"><code><div>$ pip install pillow
+</div></code></pre>
+<pre class="hljs"><code><div><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-keyword">from</span> PIL <span class="hljs-keyword">import</span> Image
+<span class="hljs-meta">&gt;&gt;&gt; </span>im = Image.open(<span class="hljs-string">"images/sin.png"</span>)    <span class="hljs-comment"># 画像の読み込み</span>
+<span class="hljs-meta">&gt;&gt;&gt; </span>im.show()                            <span class="hljs-comment"># 画像の表示</span>
+<span class="hljs-meta">&gt;&gt;&gt; </span>im.size                              <span class="hljs-comment"># 画像サイズの取得</span>
+(<span class="hljs-number">640</span>, <span class="hljs-number">480</span>)
+<span class="hljs-meta">&gt;&gt;&gt; </span>im.resize((<span class="hljs-number">320</span>, <span class="hljs-number">480</span>)).show()         <span class="hljs-comment"># リサイズ</span>
+<span class="hljs-meta">&gt;&gt;&gt; </span>im.rotate(<span class="hljs-number">90</span>).show()                 <span class="hljs-comment"># 回転</span>
+<span class="hljs-meta">&gt;&gt;&gt; </span>im.save(<span class="hljs-string">"pillow.png"</span>)                <span class="hljs-comment"># 保存</span>
+</div></code></pre>
+<h4 id="opencv"><a href="https://github.com/skvark/opencv-python">OpenCV</a></h4>
+<p>より高度な画像処理ライブラリ。<br>
+画像処理分野の研究成果が実装されている。</p>
+<pre class="hljs"><code><div>$ pip install opencv-python
+</div></code></pre>
+<h4 id="click"><a href="https://palletsprojects.com/p/click/">Click</a></h4>
+<p>コマンドラインインターフェース(CLI)を作るためのライブラリ。<br>
+標準ライブラリでもCLIを作ることはできるが、メンテナンス性が良いのでこのライブラリを使用することを推奨する。</p>
+<pre class="hljs"><code><div>$ pip install click
+</div></code></pre>
+<h4 id="django-flask-fastapi">Django, Flask, FastAPI</h4>
+<p><a href="https://docs.djangoproject.com/en/4.0/">Django</a><br>
+<a href="https://flask.palletsprojects.com/en/2.1.x/">Flask</a><br>
+<a href="https://fastapi.tiangolo.com/">FastAPI</a></p>
+<p>ウェブアプリケーションフレームワークライブラリ。<br>
+Pythonでウェブアプリケーションを作る場合にどれかにお世話になるだろう。
+おすすめはFastAPIである。</p>
+<pre class="hljs"><code><div><span class="hljs-meta">$</span><span class="bash"> pip install django</span>
+<span class="hljs-meta">$</span><span class="bash"> pip install flask</span>
+<span class="hljs-meta">$</span><span class="bash"> pip install fastapi</span>
+</div></code></pre>
+<h4 id="tensorflow-pytorch">TensorFlow, PyTorch</h4>
+<p><a href="https://www.tensorflow.org/">TensorFlow</a><br>
+<a href="https://pytorch.org/docs/stable/index.html">PyTorch</a></p>
+<p>機械学習ライブラリ。<br>
+機械学習研究者の研究成果が詰め込まれている。</p>
+<p>数年前の流行りのおかげで、ノウハウや書籍が充実している。
+一応、機械学習の理論を知らなくても使えるように実装されているが、ニューラルネットワークの基礎的な理論は学習しておいたほうが良いかもしれない。</p>
+<pre class="hljs"><code><div><span class="hljs-meta">$</span><span class="bash"> pip install tensorflow</span>
+<span class="hljs-meta">$</span><span class="bash"> pip install pytorch</span>
+</div></code></pre>
+<h4 id="streamlit"><a href="https://streamlit.io/">Streamlit</a></h4>
+<p>データ分析に特化したウェブアプリケーションを作れるライブラリ。<br>
+簡単なAPIでモダンなウェブアプリを作ることができる。</p>
+<pre class="hljs"><code><div>$ pip install streamlit
+</div></code></pre>
+<div class="page">
+<h2 id="%E3%82%BF%E3%82%B9%E3%82%AF%E3%82%92%E5%8A%B9%E7%8E%87%E5%8C%96%E3%81%99%E3%82%8B">タスクを効率化する</h2>
+<p>紹介したライブラリを使用して自身のタスクを効率化する例を示す。</p>
+<h3 id="%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%AE%E6%A4%9C%E7%B4%A2"><a href="app_examples/search_files.py">ファイルの検索</a></h3>
+<p>カレントディレクトリ以下に眠るPythonソースファイル<code>.py</code>を検索して、そのパスをコンソール出力してみよう。</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">import</span> pathlib
+
+dirctory = pathlib.Path.cwd()
+suffix = <span class="hljs-string">".py"</span>
+
+
+<span class="hljs-keyword">for</span> file <span class="hljs-keyword">in</span> dirctory.glob(<span class="hljs-string">f"**/*<span class="hljs-subst">{suffix}</span>"</span>):
+    print(file)
+
+</div></code></pre>
+<h3 id="%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%AE%E3%82%B3%E3%83%94%E3%83%BC%E3%83%BB%E7%A7%BB%E5%8B%95"><a href="app_examples/move_files.py">ファイルのコピー・移動</a></h3>
+<p>特定のキーワードをファイル名に含むファイルを検索して、一つのフォルダに集めてみよう。</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">import</span> pathlib
+<span class="hljs-keyword">import</span> shutil
+
+directory = pathlib.Path(<span class="hljs-string">"//192.168.0.10/disk/references"</span>)
+destination = pathlib.Path.cwd() / <span class="hljs-string">"dest"</span>
+keywords = [<span class="hljs-string">"In"</span>, <span class="hljs-string">"量子ドット"</span>]
+
+
+destination.mkdir(parents=<span class="hljs-literal">True</span>, exist_ok=<span class="hljs-literal">True</span>)
+<span class="hljs-keyword">for</span> file <span class="hljs-keyword">in</span> directory.glob(<span class="hljs-string">"**/*"</span>):
+    <span class="hljs-keyword">if</span> file.is_dir():
+        <span class="hljs-keyword">continue</span>
+    <span class="hljs-keyword">if</span> all((keyword <span class="hljs-keyword">in</span> file.name) <span class="hljs-keyword">for</span> keyword <span class="hljs-keyword">in</span> keywords):
+        shutil.copy(file, destination)
+
+</div></code></pre>
+<h3 id="zip%E5%9C%A7%E7%B8%AE"><a href="app_examples/zip.py">zip圧縮</a></h3>
+<p>zipアーカイブを作ってみよう。</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">import</span> pathlib
+<span class="hljs-keyword">import</span> shutil
+
+directory = pathlib.Path.cwd() / <span class="hljs-string">"data"</span>
+
+shutil.make_archive(directory.name, format=<span class="hljs-string">"zip"</span>, root_dir=directory)
+
+</div></code></pre>
+<h3 id="%E3%82%A6%E3%82%A7%E3%83%96%E3%83%9A%E3%83%BC%E3%82%B8%E3%82%92%E5%8F%96%E5%BE%97"><a href="app_examples/save_webpage.py">ウェブページを取得</a></h3>
+<p>ウェブからデータを取得して任意のディレクトリに保存しよう。</p>
+<p>HTMLテキストはもちろん、zipファイルや画像データといったバイナリも取得して保存できる。</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">import</span> pathlib
+<span class="hljs-keyword">import</span> requests
+
+savedir = pathlib.Path.cwd() / <span class="hljs-string">"webpages"</span>
+urls = []
+
+
+savedir.mkdir(parents=<span class="hljs-literal">True</span>, exist_ok=<span class="hljs-literal">True</span>)
+<span class="hljs-keyword">for</span> url <span class="hljs-keyword">in</span> urls:
+    response = requests.get(url)
+    response.raise_for_status()
+    filename = response.url.split(<span class="hljs-string">"/"</span>)[<span class="hljs-number">-1</span>]
+    <span class="hljs-keyword">with</span> open(savedir / filename, mode=<span class="hljs-string">"wb"</span>) <span class="hljs-keyword">as</span> f:
+        f.write(response.content)
+
+</div></code></pre>
+<h3 id="html%E3%82%92%E8%A7%A3%E6%9E%90"><a href="app_examples/analyze_webpage.py">HTMLを解析</a></h3>
+<p>ウェブからHTMLテキストを取得して解析してみよう。
+独自のスクリプトを作成する際はChromeのDevTools(f12)のElementタブが便利だ。</p>
+<p>過去の応用物理学会講演会からキーワードに合致した講演タイトルを出力する。</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">import</span> requests
+<span class="hljs-keyword">import</span> bs4
+
+keywords = [<span class="hljs-string">"Ga"</span>, <span class="hljs-string">"量子ドット"</span>]
+url_base = <span class="hljs-string">"https://confit.atlas.jp"</span>
+programs = {
+    <span class="hljs-string">"2021年 第82回応用物理学会秋季学術講演会（オンライン）"</span>: url_base + <span class="hljs-string">"/guide/event/jsap2021a/class"</span>,
+    <span class="hljs-string">"2021年 第68回応用物理学会春季学術講演会（オンライン）"</span>: url_base + <span class="hljs-string">"/guide/event/jsap2021s/class"</span>,
+}
+
+
+headers = {<span class="hljs-string">"Accept-Language"</span>: <span class="hljs-string">"ja"</span>}
+<span class="hljs-keyword">for</span> program, url <span class="hljs-keyword">in</span> programs.items():
+    print(program)
+    response = requests.get(url, headers=headers)
+    response.raise_for_status()
+    soup = bs4.BeautifulSoup(response.content, <span class="hljs-string">"html.parser"</span>)
+    dl_tag = soup.find(<span class="hljs-string">"dl"</span>, attrs={<span class="hljs-string">"class"</span>: <span class="hljs-string">"cmn-dl"</span>})
+    <span class="hljs-keyword">if</span> dl_tag <span class="hljs-keyword">is</span> <span class="hljs-literal">None</span>:
+        <span class="hljs-keyword">continue</span>
+    session_urls = [
+        url_base + tag.get(<span class="hljs-string">"href"</span>) <span class="hljs-keyword">for</span> tag <span class="hljs-keyword">in</span> dl_tag.find_all(<span class="hljs-string">"a"</span>)
+        <span class="hljs-keyword">if</span> isinstance(tag, bs4.Tag)
+    ]
+    <span class="hljs-keyword">for</span> session_url <span class="hljs-keyword">in</span> session_urls:
+        _response = requests.get(session_url, headers=headers)
+        _response.raise_for_status()
+        _soup = bs4.BeautifulSoup(_response.content, <span class="hljs-string">"html.parser"</span>)
+        title_tags = [
+            tag.find(<span class="hljs-string">"a"</span>) <span class="hljs-keyword">for</span> tag <span class="hljs-keyword">in</span> _soup.find_all(<span class="hljs-string">"h1"</span>, attrs={<span class="hljs-string">"title"</span>: <span class="hljs-string">"講演名"</span>})
+            <span class="hljs-keyword">if</span> isinstance(tag, bs4.Tag)
+        ]
+        <span class="hljs-keyword">for</span> tag <span class="hljs-keyword">in</span> title_tags:
+            <span class="hljs-keyword">if</span> all((keyword <span class="hljs-keyword">in</span> tag.text) <span class="hljs-keyword">for</span> keyword <span class="hljs-keyword">in</span> keywords):
+                print(tag.text)
+                print(url_base + tag.get(<span class="hljs-string">"href"</span>))
+    print()
+
+</div></code></pre>
+<p>HTTPリクエストは処理に時間がかかるため、このスクリプトは実行に時間がかかる。
+これをマルチスレッド化して高速化してみよう。</p>
+<h3 id="%E3%83%96%E3%83%A9%E3%82%A6%E3%82%B6%E6%93%8D%E4%BD%9C%E3%82%92%E8%87%AA%E5%8B%95%E5%8C%96"><a href="app_examples/automate_browser.py">ブラウザ操作を自動化</a></h3>
+<p>Pythonでブラウザを操作してみよう。</p>
+<p>ブラウザを通してGoogleの検索機能を使い、検索結果をコンソール出力する。</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">import</span> selenium.webdriver <span class="hljs-keyword">as</span> wd
+<span class="hljs-keyword">from</span> selenium.webdriver.common <span class="hljs-keyword">import</span> by, keys
+<span class="hljs-keyword">from</span> selenium.common <span class="hljs-keyword">import</span> exceptions
+<span class="hljs-keyword">import</span> chromedriver_binary  <span class="hljs-comment"># noqa</span>
+
+query = <span class="hljs-string">"waseda university"</span>
+
+
+
+options = wd.ChromeOptions()
+options.add_experimental_option(<span class="hljs-string">"excludeSwitches"</span>, [<span class="hljs-string">"enable-logging"</span>])
+options.add_argument(<span class="hljs-string">"--headless"</span>)  <span class="hljs-comment"># ヘッドレスモード</span>
+driver = wd.Chrome(options=options)
+driver.implicitly_wait(<span class="hljs-number">1</span>)
+<span class="hljs-keyword">try</span>:
+    driver.get(<span class="hljs-string">"https://google.com"</span>)
+    search_box = driver.find_element(by.By.NAME, <span class="hljs-string">"q"</span>)
+    search_box.send_keys(query)
+    search_box.send_keys(keys.Keys.RETURN)
+    search = driver.find_element(by.By.ID, <span class="hljs-string">"search"</span>)
+    <span class="hljs-keyword">for</span> a <span class="hljs-keyword">in</span> search.find_elements(by.By.TAG_NAME, <span class="hljs-string">"a"</span>):
+        <span class="hljs-keyword">try</span>:
+            h3 = a.find_element(by.By.TAG_NAME, <span class="hljs-string">"h3"</span>)
+            print(h3.text, a.get_attribute(<span class="hljs-string">"href"</span>))
+        <span class="hljs-keyword">except</span> exceptions.NoSuchElementException:
+            <span class="hljs-keyword">continue</span>
+<span class="hljs-keyword">finally</span>:
+    driver.quit()
+
+</div></code></pre>
+<p>Copyright (c) 2022 Shuhei Nitta. All rights reserved.</p>
+
+</body>
+</html>

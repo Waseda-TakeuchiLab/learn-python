@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>README.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/*
+
+Visual Studio-like style based on original C# coloring by Jason Diamond <jason@diamond.name>
+
+*/
+.hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 0.5em;
+  background: white;
+  color: black;
+}
+
+.hljs-comment,
+.hljs-quote,
+.hljs-variable {
+  color: #008000;
+}
+
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-built_in,
+.hljs-name,
+.hljs-tag {
+  color: #00f;
+}
+
+.hljs-string,
+.hljs-title,
+.hljs-section,
+.hljs-attribute,
+.hljs-literal,
+.hljs-template-tag,
+.hljs-template-variable,
+.hljs-type,
+.hljs-addition {
+  color: #a31515;
+}
+
+.hljs-deletion,
+.hljs-selector-attr,
+.hljs-selector-pseudo,
+.hljs-meta {
+  color: #2b91af;
+}
+
+.hljs-doctag {
+  color: #808080;
+}
+
+.hljs-attr {
+  color: #f00;
+}
+
+.hljs-symbol,
+.hljs-bullet,
+.hljs-link {
+  color: #00b0e8;
+}
+
+
+.hljs-emphasis {
+  font-style: italic;
+}
+
+.hljs-strong {
+  font-weight: bold;
+}
+
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+<link rel="stylesheet" href="file:///g%3A/%E3%83%9E%E3%82%A4%E3%83%89%E3%83%A9%E3%82%A4%E3%83%96/univ/%E7%AB%B9%E5%86%85%E7%A0%94/Python%E5%AD%A6%E7%BF%92%E8%B3%87%E6%96%99/.vscode/github-markdown.css" type="text/css"><link rel="stylesheet" href="file:///g%3A/%E3%83%9E%E3%82%A4%E3%83%89%E3%83%A9%E3%82%A4%E3%83%96/univ/%E7%AB%B9%E5%86%85%E7%A0%94/.vscode/github-markdown.css" type="text/css">
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="python%E5%AD%A6%E7%BF%92%E3%82%AD%E3%83%83%E3%83%88">Python学習キット</h1>
+<ul>
+<li><a href="#python%E5%AD%A6%E7%BF%92%E3%82%AD%E3%83%83%E3%83%88">Python学習キット</a>
+<ul>
+<li><a href="#python%E3%81%A8%E3%81%AF">Pythonとは</a>
+<ul>
+<li><a href="#%E5%8B%95%E7%9A%84%E5%9E%8B%E4%BB%98%E3%81%91%E3%81%A8%E9%9D%99%E7%9A%84%E5%9E%8B%E4%BB%98%E3%81%91">動的型付けと静的型付け</a></li>
+<li><a href="#%E3%82%A4%E3%83%B3%E3%82%BF%E3%83%97%E3%83%AA%E3%82%BF%E8%A8%80%E8%AA%9E%E3%81%A8%E3%82%B3%E3%83%B3%E3%83%91%E3%82%A4%E3%83%A9%E8%A8%80%E8%AA%9E">インタプリタ言語とコンパイラ言語</a></li>
+</ul>
+</li>
+<li><a href="#%E8%89%AF%E3%81%84%E3%82%B3%E3%83%BC%E3%83%89%E3%82%92%E6%9B%B8%E3%81%8F%E3%81%9F%E3%82%81%E3%81%AB">良いコードを書くために</a>
+<ul>
+<li><a href="#%E5%A4%89%E6%95%B0%E5%90%8D%E3%81%AF%E7%9C%81%E7%95%A5%E3%81%97%E3%81%AA%E3%81%84">変数名は省略しない</a></li>
+<li><a href="#%E5%A4%89%E6%95%B0%E3%82%92%E5%AE%9A%E7%BE%A9%E3%81%97%E3%81%9F%E5%A0%B4%E6%89%80%E3%81%A8%E4%BD%BF%E3%81%86%E5%A0%B4%E6%89%80%E3%82%92%E9%9B%A2%E3%81%95%E3%81%AA%E3%81%84">変数を定義した場所と使う場所を離さない</a></li>
+<li><a href="#%E5%AE%9A%E6%95%B0%E3%81%AF%E5%A4%A7%E6%96%87%E5%AD%97%E3%81%A7%E6%9B%B8%E3%81%8F">定数は大文字で書く</a></li>
+<li><a href="#%E5%A4%A7%E3%81%8D%E3%81%84%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%97%E3%83%88%E3%81%AF%E9%96%A2%E6%95%B0%E5%8C%96%E3%81%99%E3%82%8B">大きいスクリプトは関数化する</a></li>
+<li><a href="#%E5%9E%8B%E3%82%A2%E3%83%8E%E3%83%86%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E3%82%92%E3%81%A4%E3%81%91%E3%82%8B">型アノテーションをつける</a></li>
+<li><a href="#%E3%81%A8%E3%81%AB%E3%81%8B%E3%81%8F%E6%9B%B8%E3%81%8F">とにかく書く</a></li>
+</ul>
+</li>
+<li><a href="#%E5%88%9D%E7%B4%9A%E7%B7%A8%E3%81%AE%E6%A6%82%E8%A6%81">初級編の概要</a></li>
+<li><a href="#%E4%B8%AD%E7%B4%9A%E7%B7%A8%E3%81%AE%E6%A6%82%E8%A6%81">中級編の概要</a></li>
+<li><a href="#%E4%B8%8A%E7%B4%9A%E7%B7%A8%E3%81%AE%E6%A6%82%E8%A6%81">上級編の概要</a></li>
+</ul>
+</li>
+</ul>
+<p>この資料はPythonをコンピュータの一つのインターフェイスとして使えるようになるための学習資料である。</p>
+<p>習得レベル別に次の三編で構成されている。</p>
+<ul>
+<li><a href="%E5%88%9D%E7%B4%9A%E7%B7%A8.pdf">初級編</a></li>
+<li><a href="%E4%B8%AD%E7%B4%9A%E7%B7%A8.pdf">中級編</a></li>
+<li><a href="%E4%B8%8A%E7%B4%9A%E7%B7%A8.pdf">上級編</a></li>
+</ul>
+<p>初級編では文法や構文といったプログラミング言語としてのPythonを学ぶ。<br>
+中級編では自身の作業を効率化できるように一つのシステムとしてのPythonを学ぶ。<br>
+上級編では他人の作業も効率化できるようにPythonによるアプリケーション・ライブラリの作成方法を学ぶ。</p>
+<div class="page"></div>
+<h2 id="python%E3%81%A8%E3%81%AF">Pythonとは</h2>
+<p>PythonはPython Software Foundationというコミュニティが開発している動的型付けインタプリタ言語・システムである。</p>
+<p>比較対象として、静的型付けコンパイラ言語である<code>C言語</code>と比べてみよう。</p>
+<h3 id="%E5%8B%95%E7%9A%84%E5%9E%8B%E4%BB%98%E3%81%91%E3%81%A8%E9%9D%99%E7%9A%84%E5%9E%8B%E4%BB%98%E3%81%91">動的型付けと静的型付け</h3>
+<p><code>C言語</code>では変数や引数に必ず”型”を付けなければならない。</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">int</span> x = <span class="hljs-number">1</span>
+<span class="hljs-keyword">double</span> y = <span class="hljs-number">1.0</span>
+
+<span class="hljs-keyword">int</span> add(<span class="hljs-keyword">int</span> a, <span class="hljs-keyword">int</span> b) {
+    <span class="hljs-keyword">return</span> a + b
+}
+</div></code></pre>
+<p>上のコードの<code>x</code>と<code>y</code>はどちらも&quot;１&quot;ではあるが、型が<code>int</code>と<code>double</code>で異なるので、コード上では全くの別物である。</p>
+<p>これは計算機の仕様でいうと、メモリが関係している。
+<code>int</code>型を宣言するということは、「32bit=4byte分のメモリ領域を確保しろ」という命令を与えることを意味する。
+<code>double</code>型の宣言は、64bit=8byte分のメモリ領域を確保することを意味する。</p>
+<p>一方で、Pythonではコード上で型を意識する必要はない。</p>
+<pre class="hljs"><code><div>x = <span class="hljs-number">1</span>
+y = <span class="hljs-number">1.0</span>
+z = x + y
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">add</span><span class="hljs-params">(a, b)</span>:</span>
+    <span class="hljs-keyword">return</span> a + b
+</div></code></pre>
+<p>厳密に型を指定してコードを書く必要がないので、ふわっとした仕様のままコーディング・実行できるというメリットがある。</p>
+<p>動的型付けは90年代後半(JavaScript, Ruby, etc...)のブームであったが、2000年代後半では型による厳密性やメンテナンス性が再び評価され、静的型付け言語(Go [2009, Google])や動的型付け言語に型を付ける(TypeScript [2012, Microsoft], Julia [2012, MIT])のが主流になっている。</p>
+<p>Pythonもその流れに乗り、<code>Python3.6</code>からは「型アノテーション」がサポートされ、コードの可読性や保守性を向上させることができる。</p>
+<pre class="hljs"><code><div>x: int = <span class="hljs-number">1</span>
+y: float = <span class="hljs-number">1.0</span>
+z: float = x + y
+
+Real = int | float
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">add</span><span class="hljs-params">(a: Real, b: Real)</span> -&gt; Real:</span>
+    <span class="hljs-keyword">return</span> a + b
+</div></code></pre>
+<p>型アノテーションはただのアノテーションに過ぎないため、実行時には何も効果はない。
+上の関数<code>add</code>の引数<code>a</code>に文字列<code>&quot;hello&quot;</code>を入れても、エラーを吐くことはなく実行できてしまう。
+これを実行前にチェックするのにmypyというツールを使うのだが、詳しくは上級編で解説する。</p>
+<p>私の意見だが、他人に見せるコードには型アノテーションを付けることを推奨する。
+型の有無で、読むときと使うときの効率が段違いであるからだ。
+一か月後の自分も実質&quot;他人&quot;であるため、書き捨てのスクリプト以外には型アノテーションを付けておいたほうが良いというのが私の経験則である。</p>
+<h3 id="%E3%82%A4%E3%83%B3%E3%82%BF%E3%83%97%E3%83%AA%E3%82%BF%E8%A8%80%E8%AA%9E%E3%81%A8%E3%82%B3%E3%83%B3%E3%83%91%E3%82%A4%E3%83%A9%E8%A8%80%E8%AA%9E">インタプリタ言語とコンパイラ言語</h3>
+<p>プログラムは最終的に0と1で構成されるビット列に変換されてから、電気信号として演算器で処理される。
+このビット列はマシン語と呼ばれている。
+<code>C言語</code>ではソースファイルからマシン語のファイルを生成しなければプログラムを実行することはできない。
+このマシン語のファイルを生成する操作をコンパイルという。</p>
+<p>マシン語はOSやCPUアーキテクチャによって異なるため、実行ファイルを他者から譲り受けても同じ環境でなければ実行することはできない。
+ソースファイルを他者から譲り受けても、実行するには適切なライブラリを用意してコンパイルする必要がある。</p>
+<p>Pythonはこうした環境の違いを吸収してくれるので、Pythonさえ動く環境を用意すれば、同じソースファイルを即座に実行できる。</p>
+<p>Pythonはソースコードを一行ずつ読み取り、マシン語に変換しながらプログラムを実行している。
+このようなソフトウェアをインタプリタという。
+インタプリタは実行時に逐次マシン語に翻訳しているので、コンパイル言語と比べると実行が遅い、メモリ使用量が多いなどのデメリットがある。
+遅いといっても人間と比べればずっと速いため、無人で何時間も動かす数値シミュレーションやサーバ用アプリケーションでない限り遅さを感じることはない。
+高速化するテクニックや手法はいくつか存在するが、ここでは触れないことにする。</p>
+<div class="page"></div>
+<h2 id="%E8%89%AF%E3%81%84%E3%82%B3%E3%83%BC%E3%83%89%E3%82%92%E6%9B%B8%E3%81%8F%E3%81%9F%E3%82%81%E3%81%AB">良いコードを書くために</h2>
+<p>プログラムを書くにあたり、一か月後の自分が後悔しないためのノウハウを少しばかり紹介したいと思う。</p>
+<h3 id="%E5%A4%89%E6%95%B0%E5%90%8D%E3%81%AF%E7%9C%81%E7%95%A5%E3%81%97%E3%81%AA%E3%81%84">変数名は省略しない</h3>
+<p>変数名はできるだけ省略せず、誰もが一意に読める英単語が望ましい。</p>
+<p>例えば、「結果」を表す変数を<code>res</code>と書いてしまうと、全く何も知らない人が読むと、<code>result</code>、<code>response</code>、<code>restore</code>など様々な推測が浮かんでコードを読むのを阻害する。
+はっきりと<code>result</code>と書けば、誰がどうみてもそれが「結果」を表すオブジェクトであるとわかる。</p>
+<p>また、<code>result1</code>、<code>result2</code>のような最後に数字を付ける変数命名は自分が後悔することになるので絶対に使わないこと。</p>
+<h3 id="%E5%A4%89%E6%95%B0%E3%82%92%E5%AE%9A%E7%BE%A9%E3%81%97%E3%81%9F%E5%A0%B4%E6%89%80%E3%81%A8%E4%BD%BF%E3%81%86%E5%A0%B4%E6%89%80%E3%82%92%E9%9B%A2%E3%81%95%E3%81%AA%E3%81%84">変数を定義した場所と使う場所を離さない</h3>
+<p>変数は処理直前に定義するほうが、コードを読むときに余分な記憶領域を使わずに済む。</p>
+<p>悪い例</p>
+<pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">foo</span><span class="hljs-params">()</span>:</span>
+    tmp = bar()
+    ...    <span class="hljs-comment"># 10行のコード</span>
+    result = xxx(tmp)
+</div></code></pre>
+<p>良い例</p>
+<pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">foo</span><span class="hljs-params">()</span>:</span>
+    ...    <span class="hljs-comment"># 10行のコード</span>
+    tmp = bar()
+    result = xxx(tmp)
+</div></code></pre>
+<h3 id="%E5%AE%9A%E6%95%B0%E3%81%AF%E5%A4%A7%E6%96%87%E5%AD%97%E3%81%A7%E6%9B%B8%E3%81%8F">定数は大文字で書く</h3>
+<p>これはPythonの<a href="https://peps.python.org/pep-0008/#constants">慣例の一つ</a>ある。</p>
+<pre class="hljs"><code><div>PI = <span class="hljs-number">3.14159</span>
+</div></code></pre>
+<p><code>C言語</code>の<code>const</code>とは違うため値を変更することができるが、静的解析ツールを使用することで実行前にそれを発見することができる。</p>
+<p>他にもPythonにはコーディングの慣例があり、<a href="https://peps.python.org/pep-0008/">PEP8</a>としてまとめられている。
+PEP8を遵守しなくてもプログラムは実行できるが、Python開発メンバーによる保守性や堅牢性のためのベストプラクティスであるため、「良いコードとはどんなものか」を学ぶためにも一度目を通しておくと良いかもしれない。
+特に読んでほしい<a href="https://peps.python.org/">PEP</a>項目を以下に挙げておく。</p>
+<ul>
+<li><a href="https://peps.python.org/pep-0008/">Style Guide for Python Code</a></li>
+<li><a href="https://peps.python.org/pep-0020/">The Zen of Python</a></li>
+<li><a href="https://peps.python.org/pep-0483/">The Theory of Type Hints</a></li>
+</ul>
+<h3 id="%E5%A4%A7%E3%81%8D%E3%81%84%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%97%E3%83%88%E3%81%AF%E9%96%A2%E6%95%B0%E5%8C%96%E3%81%99%E3%82%8B">大きいスクリプトは関数化する</h3>
+<p>スクリプトとして書いたPythonは一行一行読み込みながら実行しているため遅いが、関数化することでマシン語に翻訳してから実行できるため多少の速度改善が望める。</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">import</span> time
+
+n = <span class="hljs-number">100000000</span>
+
+<span class="hljs-comment"># 関数化しない場合</span>
+start = time.time()
+<span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(n):
+    _ = i ** <span class="hljs-number">2</span>
+print(<span class="hljs-string">"before:"</span>, time.time() - start, <span class="hljs-string">"[s]"</span>)
+
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">func</span><span class="hljs-params">()</span> -&gt; <span class="hljs-keyword">None</span>:</span>
+    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(n):
+        _ = i ** <span class="hljs-number">2</span>
+
+
+<span class="hljs-comment"># 関数化した場合</span>
+start = time.time()
+func()
+print(<span class="hljs-string">"after:"</span>, time.time() - start, <span class="hljs-string">"[s]"</span>)
+</div></code></pre>
+<pre class="hljs"><code><div>before: 1.8978188037872314 [s]
+after: 1.6133537292480469 [s]
+</div></code></pre>
+<h3 id="%E5%9E%8B%E3%82%A2%E3%83%8E%E3%83%86%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E3%82%92%E3%81%A4%E3%81%91%E3%82%8B">型アノテーションをつける</h3>
+<p>最低でも関数の引数と戻り値には型アノテーションは絶対つけるようにする。<br>
+それをしない場合、自作関数を使うたびに関数全体を読み直すことになる。</p>
+<p>再利用する頻度が高い場合は、docstringを付けておくのも望ましい。</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">import</span> os
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">load</span><span class="hljs-params">(filename: str | os.PathLike[str])</span> -&gt; list[list[str]]:</span>
+    <span class="hljs-string">"""
+    Load data from file
+
+    Parameters
+    ----------
+    filename : str | os.PathLike[str]
+        Path to a file to load.
+    
+    Returns
+    list[list[str]]
+        The loaded data.
+    """</span>
+    
+</div></code></pre>
+<p>docstringは<a href="https://numpydoc.readthedocs.io/en/latest/format.html">Numpyスタイル</a>と<a href="https://google.github.io/styleguide/pyguide.html">Googleスタイル</a>がメジャーである。</p>
+<h3 id="%E3%81%A8%E3%81%AB%E3%81%8B%E3%81%8F%E6%9B%B8%E3%81%8F">とにかく書く</h3>
+<p>最初から完璧なプログラムを書ける人は存在しない。
+とにかく、まず書いてみることが重要である。</p>
+<p>とりあえず書いた雑なコードを何度もリファクタリングすることによって、コーディングスキルとコードは洗練されていく。</p>
+<p>一つの言語を習得すれば、「Pythonでこういう処理を、この言語で実装するにはどうすれば良いですか？」という質問ができるようになるので、他言語の習得速度が必ず上がる。</p>
+<p>Pythonはエラーも比較的わかりやすいから、とりあえず書いて試行錯誤してみよう。</p>
+<div class="page"></div>
+<h2 id="%E5%88%9D%E7%B4%9A%E7%B7%A8%E3%81%AE%E6%A6%82%E8%A6%81">初級編の概要</h2>
+<p><a href="%E5%88%9D%E7%B4%9A%E7%B7%A8.pdf">初級編</a>ではプログラミング言語としてPythonを学ぶ。</p>
+<p>内容は大きく分けて次の３つである。</p>
+<ul>
+<li>プログラムの実行方法</li>
+<li>文法・構文</li>
+<li>組み込み関数</li>
+</ul>
+<p>文法・構文は最低限のものをまとめておいた。
+詳しくは<a href="https://docs.python.org/ja/3.10/tutorial/index.html">公式チュートリアル</a>を参照してほしい。</p>
+<p>各オブジェクトのより詳しいメソッドについても、<a href="https://docs.python.org/ja/3.10/library/index.html#library-index">公式ドキュメント</a>を参照するかGoogleすると良い。</p>
+<p>組み込み関数は、頻繁に使用するものを挙げておいた。全ての組み込み関数は<a href="https://docs.python.org/ja/3.10/library/functions.html">ここ</a>で確認することができる。</p>
+<h2 id="%E4%B8%AD%E7%B4%9A%E7%B7%A8%E3%81%AE%E6%A6%82%E8%A6%81">中級編の概要</h2>
+<p><a href="%E4%B8%AD%E7%B4%9A%E7%B7%A8.pdf">中級編</a>ではPythonを使った自身の作業の効率化の方法を学ぶ。</p>
+<p>内容は大きく分けて次の4つである。</p>
+<ul>
+<li>ライブラリの使用方法</li>
+<li>標準ライブラリの紹介</li>
+<li>サードパーティライブラリの紹介</li>
+<li>効率化アプリケーションの例</li>
+</ul>
+<p>Pythonは標準ライブラリが充実しているので、一度目を通すだけでソースコードの量が減ったり、できることが増えたりする。
+私は学習初期に<a href="https://docs.python.org/ja/3.10/library/index.html#library-index">標準ライブラリ</a>の気になった項目を１日１つ読んでいた。</p>
+<p>サードパーティライブラリについては、私の知る限りで頻繁に使用するライブラリを挙げておいた。
+さらにPythonでできることを増やしたい場合は、<a href="https://pypi.org/">PyPI</a>や<a href="https://github.com/">GitHub</a>検索すると良い。</p>
+<p>アプリケーション例のコードは、<code>app_examples</code>ディレクトリにまとめられている。</p>
+<h2 id="%E4%B8%8A%E7%B4%9A%E7%B7%A8%E3%81%AE%E6%A6%82%E8%A6%81">上級編の概要</h2>
+<p><a href="%E4%B8%8A%E7%B4%9A%E7%B7%A8.pdf">上級編</a>ではライブラリ・アプリケーションの作成方法を学ぶ。</p>
+<p>Copyright (c) 2022 Shuhei Nitta. All rights reserved.</p>
+
+</body>
+</html>

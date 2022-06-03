@@ -1,0 +1,6 @@
+# numpy
+# matplotlib
+# plotly
+# pandas
+# requests
+# beautifulsoup4
